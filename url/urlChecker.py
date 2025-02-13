@@ -9,7 +9,7 @@ def urlChecker(url):
     'Accept-Language': 'en-US,en;q=0.5'}
 
     response = requests.get(url, headers=headers)
-
+    #Checks if URL is from GitHub
     if (response.status_code == 200) and (response.headers["Server"] == "GitHub.com"):
         return True
     else:
