@@ -10,7 +10,8 @@ def is_url_repo(url):
     if len(parts) != 2:
         return False
 
-    user, repo = parts
+    user = parts[0]
+    repo = parts[1]
 
     # Construct the API URL
     api_url = f'https://api.github.com/repos/{user}/{repo}'

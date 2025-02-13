@@ -170,3 +170,15 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+myenv/lib64
+myenv/pyvenv.cfg
+myenv/bin/activate
+myenv/bin/activate.csh
+myenv/bin/activate.fish
+myenv/bin/Activate.ps1
+myenv/bin/pip
+myenv/bin/pip3
+myenv/bin/pip3.12
+myenv/bin/python
+myenv/bin/python3
+myenv/bin/python3.12
