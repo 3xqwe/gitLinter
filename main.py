@@ -3,7 +3,7 @@ from url.urlChecker import *
 from localPath.localPathChecker import *
 from localPath.cloneLocally import *
 from url.urlRepo import *
-
+print("\n-----Welcome to gitLinter-----\n")
 userInput = input("Please specify Github URL or local path to repository: ")
 
 if userInput.startswith(('http://', 'https://')):
