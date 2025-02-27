@@ -1,8 +1,5 @@
-import os
-from url.urlChecker import *
-from localPath.localPathChecker import *
-from localPath.cloneLocally import *
-from url.urlRepo import *
+from functionsImport import*
+
 print("\n-----Welcome to gitLinter-----\n")
 userInput = input("Please specify Github URL or local path to repository: ")
 
@@ -10,8 +7,7 @@ if userInput.startswith(('http://', 'https://')):
     if urlChecker(userInput) is True:
         if is_url_repo(userInput):
             print("Valid Github repository URL")
-            localPathInput= input("Enter the local path to where you want the cloned repository: ")
-            clone_github_repo(userInput,localPathInput)
+            userInput = clone_github_repo(userInput)
         else:
             print("Not valid Github repository")
     else:
@@ -26,5 +22,7 @@ elif os.path.isdir(userInput):
 else:
     print("Input is not a GitHub URL or a local repository")
 
-
-
+print("\n---Checking for best practices. ---\n")
+print(checkReadme(userInput),"\n")
+print(checkLicense(userInput),"\n")
+print(checkGitignore(userInput),"\n")
