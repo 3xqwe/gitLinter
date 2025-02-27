@@ -10,21 +10,21 @@ def checkLicense(repoPath):
             if file=="LICENSE":
                 licensePath = os.path.join(root, "LICENSE")
                 licenseFile.append(licensePath)
-                print(f"Found LICENSE file: {licensePath}")  # Debug: Print the path of the found LICENSE file
+                print(f"Found LICENSE file: {licensePath}")  
 
     # 
     # Check if no LICENSE file exists
     if not licenseFile:
-        return "Missing LICENSE file. Create a LICENSE file to define the terms of use for the project."
+        return "\U0001F7E5 - Missing LICENSE file. Create a LICENSE file to define the terms of use for the project."
 
     # Check if there is more than one LICENSE file
     if len(licenseFile) > 1:
-        return "Multiple LICENSE files. There should be only one LICENSE file in the repository."
+        return "\U0001F7E8 - Multiple LICENSE files. There should be only one LICENSE file in the repository."
 
     # Check if the LICENSE file is empty
     with open(licenseFile[0], 'r') as file:
         content = file.read().strip()  # Strip whitespace and check if the file is empty
         if not content:
-            return "Empty LICENSE file. The LICENSE file exists but is empty. Add the appropriate licensing terms (e.g. MIT)."
+            return "\U0001F7E8 - Empty LICENSE file. The LICENSE file exists but is empty. Add the appropriate licensing terms (e.g. MIT)."
 
-    return "LICENSE OK. LICENSE file exists and has content."
+    return "\U0001F7E9 - LICENSE OK. LICENSE file exists and has content."

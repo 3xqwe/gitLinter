@@ -9,15 +9,16 @@ def checkGitignore(repoPath):
         if ".gitignore" in files:
             gitignorePath = os.path.join(root, ".gitignore")
             gitignoreFiles.append(gitignorePath)
-
+            print(f"Found LICENSE file: {gitignorePath}")
+            
     if not gitignoreFiles:
-        return "Missing .gitignore file. Create a .gitignore file to exclude unnecessary files."
+        return "\U0001F7E5 - Missing .gitignore file. Create a .gitignore file to exclude unnecessary files."
     
     # Check if any .gitignore is empty
     for files in gitignoreFiles:
         with open(files,'r') as file:
             content = file.read().strip()  # Strip whitespace and check if the file is empty
             if not content:
-                return "Empty .gitignore file/files. Some .gitignore files exist but are empty."
+                return "\U0001F7E8 - Empty .gitignore file/files. Some .gitignore files exist but are empty."
     
-    return ".gitignore OK. One or more .gitignore files exist and have content."
+    return "\U0001F7E9 - .gitignore OK. One or more .gitignore files exist and have content."

@@ -1,12 +1,12 @@
 import requests
 
-def is_url_repo(url):
+def isUrlRepo(url):
     
     # Remove the https://github.com/ prefix to extract the user/repo path
-    repo_path = url[len('https://github.com/'):]
+    repoPath = url[len('https://github.com/'):]
 
     # Split the path into user and repository name
-    parts = repo_path.split('/')
+    parts = repoPath.split('/')
     if len(parts) != 2:
         return False
 
