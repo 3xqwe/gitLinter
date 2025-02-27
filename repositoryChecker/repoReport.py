@@ -1,8 +1,9 @@
 
 def detailedSummaryRepo(userInput):
-    from functionsImport import (checkReadme, checkLicense, checkGitignore, checkWorkflows, findTestFiles, getCommitCount)
+    from functionsImport import (checkReadme, checkLicense, checkGitignore, checkWorkflows, findTestFiles)
+    from repositoryChecker.contributors import summarizeContributors
 
-    print("\nThe number of commits in the repository:",getCommitCount(userInput),"\n")
+    summarizeContributors(userInput)
     print("\n---Checking for best practices. ---\n")
     print(checkReadme(userInput),"\n")
     print(checkLicense(userInput),"\n")
@@ -17,3 +18,4 @@ def detailedSummaryRepo(userInput):
         print("\U0001F7E9 - Test files/folders existed.")
     else:
         print("\U0001F7E8 - No test files/folders found.\n")
+    print("\n")

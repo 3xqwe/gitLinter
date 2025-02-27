@@ -7,6 +7,6 @@ from repositoryChecker.readmeChecker import *
 from repositoryChecker.licenseChecker import *
 from repositoryChecker.gitignoreChecker import *
 from repositoryChecker.workflowChecker import *
-from repositoryChecker.commitsCounter import *
 from repositoryChecker.repoReport import *
 from repositoryChecker.testSeeker import *
+from repositoryChecker.contributors import *
