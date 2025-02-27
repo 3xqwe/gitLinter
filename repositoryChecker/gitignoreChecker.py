@@ -1,7 +1,7 @@
 import os
 
 def checkGitignore(repoPath):
-    """Check if .gitignore exists and is not empty in any subdirectory."""
+    #Check if .gitignore exists and is not empty in any subdirectory.
     gitignoreFiles = []
     
     # Traverse the repository using os.walk
@@ -9,7 +9,7 @@ def checkGitignore(repoPath):
         if ".gitignore" in files:
             gitignorePath = os.path.join(root, ".gitignore")
             gitignoreFiles.append(gitignorePath)
-            print(f"Found LICENSE file: {gitignorePath}")
+            print(f"Found .gitignore file: {gitignorePath}")
             
     if not gitignoreFiles:
         return "\U0001F7E5 - Missing .gitignore file. Create a .gitignore file to exclude unnecessary files."

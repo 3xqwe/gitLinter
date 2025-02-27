@@ -1,10 +1,6 @@
-from functionsImport import getCommitCount
-from functionsImport import checkReadme
-from functionsImport import checkLicense
-from functionsImport import checkGitignore
-from functionsImport import checkWorkflows
 
 def detailedSummaryRepo(userInput):
+    from functionsImport import (checkReadme, checkLicense, checkGitignore, checkWorkflows, findTestFiles, getCommitCount)
 
     print("\nThe number of commits in the repository:",getCommitCount(userInput),"\n")
     print("\n---Checking for best practices. ---\n")
@@ -12,3 +8,12 @@ def detailedSummaryRepo(userInput):
     print(checkLicense(userInput),"\n")
     print(checkGitignore(userInput),"\n")
     print(checkWorkflows(userInput),"\n")
+    testFiles=findTestFiles(userInput)
+    
+    if testFiles:
+        print("Found test files/folders:")
+        for path in testFiles:
+            print(path)
+        print("\U0001F7E8 - Test files/folders existed.")
+    else:
+        print("\U0001F7E9 - No test files/folders found.\n")

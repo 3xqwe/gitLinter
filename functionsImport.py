@@ -8,5 +8,5 @@ from repositoryChecker.licenseChecker import *
 from repositoryChecker.gitignoreChecker import *
 from repositoryChecker.workflowChecker import *
 from repositoryChecker.commitsCounter import *
-from inputHandler.userInput import *
 from repositoryChecker.repoReport import *
+from repositoryChecker.testSeeker import *

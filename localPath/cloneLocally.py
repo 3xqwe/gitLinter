@@ -3,7 +3,7 @@ import os
 import json
 import base64
 import time
-from localPath.configFigLoader import loadConfig
+from localPath.configLoader import loadConfig
 
 trackingFile = "clonedRepos.json"
 
@@ -27,7 +27,7 @@ def generateID():
     timestamp = str(time.time()).encode("utf-8")
     return base64.urlsafe_b64encode(timestamp).decode("utf-8").rstrip("=")
 
-def cloneGithubRepo(github_url):
+def cloneGithubRepo(githubUrl):
     #Clone the repository into a unique folder and track it.
     basePath = loadConfig()  # Load base path from config file
     trackingData = loadTrackingData()
@@ -38,12 +38,13 @@ def cloneGithubRepo(github_url):
 
     try:
         os.makedirs(clonePath, exist_ok=True)  # Ensure the directory exists
-        git.Repo.clone_from(github_url, clonePath)
+        git.Repo.clone_from(githubUrl, clonePath)
         print(f"Repository cloned successfully to {clonePath}")
 
         # Update tracking data with repository details
         trackingData[repoID] = {
-            "repo_url": github_url,
+            "repo_url": githubUrl
+        ,
             "clonePath": clonePath
         }
         saveTrackingData(trackingData)

@@ -6,6 +6,10 @@ def checkLicense(repoPath):
     
     # Traverse the repository using os.walk
     for root, dirs, files in os.walk(repoPath):
+        #Skip directories related to installed packages
+        if "site-packages" in root:
+            continue
+        
         for file in files:
             if file=="LICENSE":
                 licensePath = os.path.join(root, "LICENSE")
