@@ -8,6 +8,6 @@ def checkWorkflows(repoPath):
     
     workflowFiles = [f for f in os.listdir(workflowsPath) if f.endswith(".yml") or f.endswith(".yaml")]
     if not workflowFiles:
-        return "\U0001F7E8 - No workflow files. Add a workflow file (e.g., a YAML/YML file)."
+        return "\U0001F7E8 - Workflow exists but there is no workflow files. Add a workflow file (e.g., a YAML/YML file)."
     
     return f"\U0001F7E9 - Workflows OK. Workflows found: {', '.join(workflowFiles)}"
