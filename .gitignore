@@ -1,4 +1,5 @@
 .myenv
+clonedRepos.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -183,3 +184,6 @@ myenv/bin/python
 myenv/bin/python3
 myenv/bin/python3.12
 myenv/bin/normalizer
+clonedRepos.json
+clonedRepos.json
+.gitignore
