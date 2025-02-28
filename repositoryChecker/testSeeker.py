@@ -6,8 +6,8 @@ def findTestFiles(repoPath):
     # Traverse all subdirectories
     for root, dirs, files in os.walk(repoPath):
         # Skip virtual environment files and then check for files starting with "test"
-        if "myenv" in root:  
-            continue
+        #if "myenv" in root:  
+            #continue
 
         for file in files:
             if file.startswith("test"):

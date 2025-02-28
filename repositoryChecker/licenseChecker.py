@@ -16,7 +16,7 @@ def checkLicense(repoPath):
                 licenseFile.append(licensePath)
                 print(f"Found LICENSE file: {licensePath}")  
 
-    # 
+    
     # Check if no LICENSE file exists
     if not licenseFile:
         return "\U0001F7E5 - Missing LICENSE file. Create a LICENSE file to define the terms of use for the project."

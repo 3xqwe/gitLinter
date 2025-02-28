@@ -15,7 +15,6 @@ def detailedSummaryRepo(userInput):
         print("Found test files/folders:")
         for path in testFiles:
             print(path)
-        print("\U0001F7E9 - Test files/folders existed.")
+        print("\n\U0001F7E8 - Test files/folders existed.")
     else:
         print("\U0001F7E8 - No test files/folders found.\n")
-    print("\n")
