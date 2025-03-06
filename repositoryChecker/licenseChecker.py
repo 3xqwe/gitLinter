@@ -1,34 +1,34 @@
 import os
-
 def checkLicense(repoPath):
-    #Check if exactly one LICENSE file exists and is not empty in any subdirectory.
+    from repositoryChecker.gitignoredFiles import (getGitignorePatterns,isIgnored)
+
+    # Check if exactly one LICENSE file exists and is not empty in any subdirectory.
     licenseFile = []
+    ignoredPatterns = getGitignorePatterns(repoPath)
     
-    # Traverse the repository using os.walk
-    for root, dirs, files in os.walk(repoPath):
-        #Skip directories related to installed packages
-        if "site-packages" in root:
+    for root, _, files in os.walk(repoPath):
+        if isIgnored(root, ignoredPatterns):
             continue
         
         for file in files:
-            if file=="LICENSE":
+            if file == "LICENSE":
                 licensePath = os.path.join(root, "LICENSE")
-                licenseFile.append(licensePath)
-                print(f"Found LICENSE file: {licensePath}")  
-
+                if not isIgnored(licensePath, ignoredPatterns):
+                    licenseFile.append(licensePath)
     
-    # Check if no LICENSE file exists
     if not licenseFile:
-        return "\U0001F7E5 - Missing LICENSE file. Create a LICENSE file to define the terms of use for the project."
-
-    # Check if there is more than one LICENSE file
-    if len(licenseFile) > 1:
-        return "\U0001F7E8 - Multiple LICENSE files. There should be only one LICENSE file in the repository."
-
-    # Check if the LICENSE file is empty
+        print("\n\U0001F7E5 - Missing LICENSE file. Create a LICENSE file to define the terms of use for the project.")
+        return licenseFile
+    
     with open(licenseFile[0], 'r') as file:
-        content = file.read().strip()  # Strip whitespace and check if the file is empty
+        content = file.read().strip()
         if not content:
-            return "\U0001F7E8 - Empty LICENSE file. The LICENSE file exists but is empty. Add the appropriate licensing terms (e.g. MIT)."
-
-    return "\U0001F7E9 - LICENSE OK. LICENSE file exists and has content."
+            print("\n\U0001F7E8 - Empty LICENSE file. The LICENSE file exists but is empty. Add the appropriate licensing terms (e.g. MIT).")
+            return licenseFile
+    
+    print("\n\U0001F7E9 - LICENSE OK. LICENSE file exists and has content.")
+    print("Found LICENSE file:")
+    for files in licenseFile:
+        print(f"{files}")
+    
+    return licenseFile

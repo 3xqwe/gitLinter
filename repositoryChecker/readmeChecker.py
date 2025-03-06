@@ -8,18 +8,26 @@ def checkReadme(repoPath):
         if "README.md" in files:
             readmePath = os.path.join(root, "README.md")
             readmeFiles.append(readmePath)
-            print(f"Found README file: {readmePath}")
+    
     if not readmeFiles:
-        return "\U0001F7E5 - Missing README.md file. Create a README.md file to provide project description and installation instructions."
+        print("\n\U0001F7E5 - Missing README.md file. Create a README.md file to provide project description and installation instructions.")
+        return readmeFiles
     
     if len(readmeFiles) > 1:
-        return "\U0001F7E8 - Multiple README.md files. There should be only one README.md file in the repository."
-
-
+        print("\n\U0001F7E8 - Multiple README.md files. There should be only one README.md file in the repository.")
+        for files in readmeFiles:
+            print (files)
+        return readmeFiles
+    
     # Check if README.md is empty
     with open(readmeFiles[0],'r') as file:
         content = file.read().strip()  # Strip whitespace and check if the file is empty
         if not content:
-            return "\U0001F7E8 - Empty README.md file. README.md file exist but is empty. Add relevant project information."
+            print("\n\U0001F7E8 - Empty README.md file. README.md file exist but is empty. Add relevant project information.")
+            return readmeFiles
     
-    return "\U0001F7E9 - README.md OK. README.md file exists and has content."
+    print("\n\U0001F7E9 - README.md OK. README.md file exists and has content.")
+    print(f"Found README file:\n{readmePath}")
+    return readmeFiles
+ 
+    

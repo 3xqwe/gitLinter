@@ -29,3 +29,4 @@ while not validInput:
         print("Input is not a GitHub URL or a local repository, try again.")
 
 detailedSummaryRepo(userInput)
+print("\n-----Run complete-----\n")

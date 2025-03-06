@@ -1,21 +1,26 @@
 import os
 
 def findTestFiles(repoPath):
+    from repositoryChecker.gitignoredFiles import (getGitignorePatterns,isIgnored)
+
+    # Finds test files and directories, excluding ignored files.
     testFiles = []
-
-    # Traverse all subdirectories
+    ignoredPatterns = getGitignorePatterns(repoPath)
+    
     for root, dirs, files in os.walk(repoPath):
-        # Skip virtual environment files and then check for files starting with "test"
-        #if "myenv" in root:  
-            #continue
-
+        if isIgnored(root, ignoredPatterns):
+            continue
+        
         for file in files:
             if file.startswith("test"):
-                testFiles.append(os.path.join(root, file))
+                filePath = os.path.join(root, file)
+                if not isIgnored(filePath, ignoredPatterns):
+                    testFiles.append(filePath)
         
-        # Check for directories named "test"
         for directory in dirs:
             if directory.startswith("test"):
-                testFiles.append(os.path.join(root, directory))
-
+                dirPath = os.path.join(root, directory)
+                if not isIgnored(dirPath, ignoredPatterns):
+                    testFiles.append(dirPath)
+    
     return testFiles
