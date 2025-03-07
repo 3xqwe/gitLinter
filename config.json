@@ -1,3 +1,12 @@
 {
-    "clone_path": "/home/wibuntu/Desktop/clonedRepositories"
+    "clone_path": "/home/wibuntu/Desktop/clonedRepositories",
+
+    "allowFail": 
+    {
+        "license": true,
+        "README": true,
+        "gitignore": true,
+        "workflow": true,
+        "test": true
+    }
 }

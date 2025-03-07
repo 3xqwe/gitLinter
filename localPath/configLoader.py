@@ -1,5 +1,6 @@
 import json
 import git
+import os
 
 # Load configuration from a JSON file
 def loadConfig(configFile="config.json"):
@@ -11,3 +12,7 @@ def loadConfig(configFile="config.json"):
     except Exception as e:
         print(f"Error loading config: {e}")
         return "./"
+    
+def configOpener():
+    with open("config.json", "r") as f:
+        return json.load(f)

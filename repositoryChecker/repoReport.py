@@ -5,17 +5,15 @@ def detailedSummaryRepo(userInput):
 
     summarizeContributors(userInput)
     print("\n---Checking for best practices. ---")
-    checkReadme(userInput)
-    checkLicense(userInput)
-    checkGitignore(userInput)
-    checkWorkflows(userInput)
-    testFiles=findTestFiles(userInput)
+   
+    # Collect the exit codes
+    exitCode = 0
     
-    if testFiles:
-        print("\n\U0001F7E8 - Test files/folders existed.")
-        print("Found test files/folders:")
-        for path in testFiles:
-            print(path)
-
-    else:
-        print("\n\U0001F7E8 - No test files/folders found.\n")
+    # Run checks and updates the exit code if necessary
+    exitCode|=checkReadme(userInput)
+    exitCode|=checkLicense(userInput)
+    exitCode|=checkGitignore(userInput)
+    exitCode|=checkWorkflows(userInput)
+    exitCode|=findTestFiles(userInput)
+    
+    return exitCode
