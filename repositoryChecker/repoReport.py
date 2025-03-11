@@ -1,8 +1,8 @@
 
 def detailedSummaryRepo(userInput):
-    from functionsImport import (checkReadme, checkLicense, checkGitignore, checkWorkflows, findTestFiles)
+    from functionsImport import (checkReadme, checkLicense, checkGitignore, checkWorkflows, findTestFiles, run_gitleaks)
     from repositoryChecker.contributors import summarizeContributors
-
+    
     summarizeContributors(userInput)
     print("\n---Checking for best practices. ---")
    
@@ -15,5 +15,6 @@ def detailedSummaryRepo(userInput):
     exitCode|=checkGitignore(userInput)
     exitCode|=checkWorkflows(userInput)
     exitCode|=findTestFiles(userInput)
+    run_gitleaks(userInput)
     
     return exitCode

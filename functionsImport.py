@@ -12,3 +12,4 @@ from repositoryChecker.repoReport import *
 from repositoryChecker.testSeeker import *
 from repositoryChecker.contributors import *
 from repositoryChecker.gitignoredFiles import *
+from repositoryChecker.gitLeaksChecker import *

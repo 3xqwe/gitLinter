@@ -1,0 +1,5 @@
+To run the code you will need the following dependencies:
+
+gitpython
+requests
+gitleaks
