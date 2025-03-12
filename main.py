@@ -29,6 +29,7 @@ while not validInput:
         print("Input is not a GitHub URL or a local repository, try again.")
 
 exitCode=detailedSummaryRepo(userInput)
-print("\n-----Run complete-----\n")
 
+print("\n-----Run complete-----\n")
+print(f"Exitcode: {exitCode}\n")
 sys.exit(exitCode)
