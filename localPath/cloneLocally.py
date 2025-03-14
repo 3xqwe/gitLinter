@@ -18,7 +18,7 @@ def loadTrackingData():
     return {}
 
 def saveTrackingData(data):
-    #Save tracking data to cloned_repos.json.
+    #Save tracking data to clonedRepos.json.
     with open(trackingFile, "w") as file:
         json.dump(data, file, indent=4)
 
@@ -43,7 +43,7 @@ def cloneGithubRepo(githubUrl):
 
         # Update tracking data with repository details
         trackingData[repoID] = {
-            "repo_url": githubUrl
+            "repoUrl": githubUrl
         ,
             "clonePath": clonePath
         }

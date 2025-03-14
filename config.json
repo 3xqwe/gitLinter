@@ -1,5 +1,5 @@
     {
-        "clone_path": "/home/wibuntu/Desktop/clonedRepositories",
+        "clonePath": "#enter-full-path",
 
         "allowFail": 
         {
@@ -7,6 +7,7 @@
             "README": false,
             "gitignore": false,
             "workflow": false,
-            "test": false
+            "test": false,
+            "secrets": false
         }
     }

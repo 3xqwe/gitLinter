@@ -15,6 +15,6 @@ def detailedSummaryRepo(userInput):
     exitCode|=checkGitignore(userInput)
     exitCode|=checkWorkflows(userInput)
     exitCode|=findTestFiles(userInput)
-    run_gitleaks(userInput)
+    exitCode|=run_gitleaks(userInput)
     
     return exitCode

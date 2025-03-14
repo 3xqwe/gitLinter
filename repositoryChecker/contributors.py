@@ -11,6 +11,16 @@ def summarizeContributors(repoPath):
         if result.returncode != 0:
             print("No commits found. The repository is empty or has no commits.")
             return
+        
+        # Get total number of commits
+        command = ["git", "rev-list", "--count", "HEAD"]
+        result = subprocess.run(command, cwd=repoPath, capture_output=True, text=True)
+
+        if result.returncode == 0:
+            totalCommits = int(result.stdout.strip())
+        else:
+            print("Failed to retrieve total commits.")
+            return
 
         # If there are commits, proceed to summarize contributors
         command = ["git", "shortlog", "-s", "-n"]  # -s for count, -n for sorting by commit count
@@ -20,6 +30,7 @@ def summarizeContributors(repoPath):
             # Process the output of git shortlog if successful
             if result.stdout.strip():
                 print("\n--- Git Contributors Summary ---")
+                print(f"Total number of commits: {totalCommits}\n")
                 print("Number of commits - Git name")
                 contributors = result.stdout.strip().splitlines()
                 for contributor in contributors:

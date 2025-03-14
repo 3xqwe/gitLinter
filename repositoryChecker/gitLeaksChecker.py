@@ -1,4 +1,5 @@
 import subprocess
+from localPath.configLoader import configOpener
 
 def run_gitleaks(repo_path):
     print("\n-----Starting Gitleaks scan on repository-----")
@@ -22,14 +23,22 @@ def run_gitleaks(repo_path):
             capture_output=True,
             text=True
         )
-
+        config=configOpener()
+        
         # Print standard output (the Gitleaks results)
         if result.stdout:
-            print("\U0001F7E5 - GitLeaks found the following: \n")
-            print(result.stdout)
+            if not config.get("allowFail", {}).get("secrets", False):
+                print("\U0001F7E5 - GitLeaks found the following secrets: \n")
+                print(result.stdout)
+                return 1
+            else:
+                print("\U0001F7E8 - GitLeaks found secrets but failure is allowed based on config.\n")
+                print(result.stdout)
+                return 0
         
         else:
             print("\U0001F7E9 - GitLeaks did not find anything")
+            return 0
             
     except Exception as e:
         print(f"Error running Gitleaks: {e}")
